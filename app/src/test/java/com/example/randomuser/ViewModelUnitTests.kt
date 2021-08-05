@@ -25,6 +25,9 @@ import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations.initMocks
 
+/**
+ * Tests for the ViewModels
+ */
 @ExperimentalCoroutinesApi
 class ViewModelUnitTests {
 

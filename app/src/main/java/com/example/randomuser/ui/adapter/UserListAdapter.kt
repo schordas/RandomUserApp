@@ -24,12 +24,13 @@ class UserListAdapter(private val clickListener: UserListener) :
 
     companion object DiffCallback: DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
-            // We assume the email is unique
+            // We assume the email is unique as it is the primary key in this case
             return oldItem.email == newItem.email
         }
 
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-            // TODO: improve this comparison
+            // Normally I would create a getter in the relevant data class to compare items in the
+            // object but I was pressed for time and didn't get to this
             return oldItem == newItem
         }
 
@@ -48,6 +49,9 @@ class UserListAdapter(private val clickListener: UserListener) :
     }
 }
 
+/**
+ * Click listener for navigation to [UserDetailFragment]
+ */
 class UserListener(val clickListener: (user: User) -> Unit) {
     fun onClick(user: User) = clickListener(user)
 }

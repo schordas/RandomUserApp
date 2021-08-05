@@ -11,18 +11,30 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
+/**
+ * This file holds all of the data classes needed to parse the api response
+ */
+
+/**
+ * This class is needed to unpack the list from the returned JSON object
+ */
 @JsonClass(generateAdapter = true)
 data class Result(
     val results: List<User>
 )
 
+/**
+ * Data class to represent a user.
+ *
+ * This entity is stored in the database.
+ */
 @Entity(tableName = "user_database")
 @JsonClass(generateAdapter = true)
 data class User(
     // Email is not the usual choice for a primary key but the ID object has a tendency to be null,
     // and email would be unique.
     // uuid could be used, but this is nested in the login data. The login data is private
-    // information and it doesn't seem critical in this particular case.
+    // information and it doesn't seem critical to extract in this particular case.
     @PrimaryKey
     val email: String,
     @Embedded val name: Name,
@@ -33,18 +45,32 @@ data class User(
     val cell: String,
     @Json(name = "nat") val nationality: String
 ) {
+    /**
+     * Format full name as First Last
+     */
     fun getFullName(): String {
         return "${name.first} ${name.last}"
     }
 
+    /**
+     * Format and return the street number followed by name
+     *
+     * ex: 123 Fake St
+     */
     fun getStreetAddress(): String {
         return "${location.street.number} ${location.street.name}"
     }
 
+    /**
+     * Format the remaining location details as City, State, Postal Code
+     */
     fun getCityStatePost(): String {
         return "${location.city}, ${location.state}, ${location.postCode}"
     }
 
+    /**
+     * Format birthday as MM/DD/YYY
+     */
     fun getBirthday(): String {
         val date = getBirthdayDate()
         // Month returns in all caps. Only the first letter should be capitalized
@@ -54,6 +80,9 @@ data class User(
         return "$month ${date.dayOfMonth}, ${date.year}"
     }
 
+    /**
+     * Determine the time in millis for the users upcoming birthday
+     */
     fun getUpcomingBirthday(): Long {
         val birthday = getBirthdayDate()
         val currentDate = LocalDateTime.now()
@@ -72,6 +101,9 @@ data class User(
         }
     }
 
+    /**
+     * Parse date format return by API into LocalDate
+     */
     private fun getBirthdayDate(): LocalDate {
         val format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         return LocalDate.parse(dob.date, format)

@@ -7,6 +7,9 @@ import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.randomuser.R
 
+/**
+ * A method to load a Url to a photo into an ImageView
+ */
 @BindingAdapter("loadImage")
 fun bindDetailImage(imageView: ImageView, url: String?) {
     url?.let {

@@ -6,6 +6,10 @@ import com.example.randomuser.network.Result
 import com.example.randomuser.util.Constants.repoFailureMessage
 import kotlinx.coroutines.flow.flow
 
+/**
+ * A fake repository to test how the [UserViewModel] responds to the flow emitted from the
+ * [UserRepository]
+ */
 class FakeFailureUserRepository : BaseUserRepository {
 
     override suspend fun getAllUsers() = flow<Result<List<User>>> {

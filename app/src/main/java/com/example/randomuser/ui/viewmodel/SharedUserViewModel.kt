@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.randomuser.model.User
 
+/**
+ * A ViewModel that is intended to be shared between [UserListFragment] and [UserDetailFragment]
+ */
 class SharedUserViewModel: ViewModel() {
 
     private val _user = MutableLiveData<User>()

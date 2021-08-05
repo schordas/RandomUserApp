@@ -43,6 +43,10 @@ class UserDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * Attempt to open a map app that focuses on a location based on coordinates.
+     * The addresses could be potentially fake, otherwise this could be passed as well.
+     */
     fun onLocationClick(location: Location) {
         val uri = Uri.parse(
             "geo:${location.coordinates.latitude},${location.coordinates.longitude}?z=8"
@@ -53,6 +57,9 @@ class UserDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * Attempt to generate a new calendar event in a calendar app.
+     */
     fun onCalendarClick(user: User) {
         val date = user.getUpcomingBirthday()
         val eventTitle = "${user.getFullName()}'s Birthday"
@@ -67,6 +74,9 @@ class UserDetailFragment : Fragment() {
         context?.startActivity(intent)
     }
 
+    /**
+     * Attempt to launch a dialer app with the clicked number
+     */
     fun onPhoneClicked(phoneNumber: String) {
         val number = phoneNumber.replace("[0-9]", "")
         val uri = Uri.parse("tel:$number")
@@ -77,6 +87,10 @@ class UserDetailFragment : Fragment() {
         context?.startActivity(intent)
     }
 
+    /**
+     * Attempt to launch a external email app.
+     * Opens a new email composition to the email address that was clicked.
+     */
     fun onEmailClicked(email: String) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
@@ -87,5 +101,10 @@ class UserDetailFragment : Fragment() {
         if (intent.appAvailable(context)) {
             context?.startActivity(intent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

@@ -10,6 +10,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * Provide all dependencies required to interact with the [UserDao] and [UserDatabase]
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {

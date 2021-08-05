@@ -33,7 +33,10 @@ class UserListFragment : Fragment() {
     ): View? {
         _binding = FragmentUserListBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        // Observe view state LiveData
         userViewModel.state.observe(viewLifecycleOwner, {
+            // set up ui appropriately according to view state
             when(it) {
                 is UserListViewState.Success -> {
                     val adapter = binding.recyclerView.adapter as UserListAdapter
@@ -65,6 +68,8 @@ class UserListFragment : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = userViewModel
+
+            // Build adapter with click listener
             recyclerView.adapter = UserListAdapter(UserListener { user ->
                 // save user to shared view model so the detail can access it
                 sharedViewModel.onUserClicked(user)

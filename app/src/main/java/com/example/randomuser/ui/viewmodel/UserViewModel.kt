@@ -16,6 +16,9 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * A ViewModel that provides data for the [UserListFragment]
+ */
 @HiltViewModel
 class UserViewModel @Inject constructor(
     private val userRepository: BaseUserRepository
@@ -25,13 +28,16 @@ class UserViewModel @Inject constructor(
     val state: LiveData<UserListViewState<List<User>>> = _state
 
     init {
+        // Initialize the data on ViewModel creation (i.e. when the fragment is created)
         getUsers()
     }
 
+    /**
+     * Method to initialize data
+     */
     private fun getUsers() {
         viewModelScope.launch {
             userRepository.getAllUsers()
-                .flowOn(Dispatchers.IO)
                 .onStart { _state.value = UserListViewState.setLoading() }
                 .map { result ->
                     UserListViewState.setState(result)
@@ -42,10 +48,12 @@ class UserViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Method to make a network request to refresh users
+     */
     fun refreshUsers() {
         viewModelScope.launch {
             userRepository.refreshUsers()
-                .flowOn(Dispatchers.IO)
                 .onStart { _state.value = UserListViewState.setLoading() }
                 .map { result ->
                     UserListViewState.setState(result)

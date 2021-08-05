@@ -21,9 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Tests for the api call
  */
 @ExperimentalCoroutinesApi
 class ApiServiceUnitTests {
@@ -79,6 +77,11 @@ class ApiServiceUnitTests {
         mockWebServer.shutdown()
     }
 
+    /**
+     * Generate a mocked response from a JSON file.
+     * The JSON could be passed directly as a string but the return from the api is quite long and
+     * difficult to format as a string.
+     */
     private fun enqueue(file: String, responseCode: Int) {
         val inStream = javaClass.classLoader!!.getResourceAsStream(file)
         val source = inStream.source().buffer()
