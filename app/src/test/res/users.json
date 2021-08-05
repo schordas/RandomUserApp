@@ -1,0 +1,122 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Noémie",
+        "last": "Gauthier"
+      },
+      "location": {
+        "street": {
+          "number": 4655,
+          "name": "King St"
+        },
+        "city": "Cumberland",
+        "state": "Québec",
+        "country": "Canada",
+        "postcode": "M9T 1S4",
+        "coordinates": {
+          "latitude": "-60.2936",
+          "longitude": "142.1393"
+        },
+        "timezone": {
+          "offset": "-12:00",
+          "description": "Eniwetok, Kwajalein"
+        }
+      },
+      "email": "noemie.gauthier@example.com",
+      "login": {
+        "uuid": "d570783c-4b1d-4b39-a5c1-ddbd9069ec98",
+        "username": "beautifulsnake850",
+        "password": "shane",
+        "salt": "UhYUoJ5v",
+        "md5": "f7fabd2b8acb3d7f23126f655eaf62fc",
+        "sha1": "26020e1ff75c11df2f31c4c6c62390182dbd6848",
+        "sha256": "d3bd48b44b5f821d8cad4ba3824ec7f858ec54aba8669006bef9acfc65587101"
+      },
+      "dob": {
+        "date": "1984-10-24T06:47:29.034Z",
+        "age": 37
+      },
+      "registered": {
+        "date": "2017-04-26T17:13:10.832Z",
+        "age": 4
+      },
+      "phone": "036-975-5421",
+      "cell": "574-325-8429",
+      "id": {
+        "name": "",
+        "value": null
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/55.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/55.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/55.jpg"
+      },
+      "nat": "CA"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Glenda",
+        "last": "Ellis"
+      },
+      "location": {
+        "street": {
+          "number": 9342,
+          "name": "Hickory Creek Dr"
+        },
+        "city": "Dubbo",
+        "state": "Australian Capital Territory",
+        "country": "Australia",
+        "postcode": 4992,
+        "coordinates": {
+          "latitude": "-0.4916",
+          "longitude": "-83.4800"
+        },
+        "timezone": {
+          "offset": "+5:30",
+          "description": "Bombay, Calcutta, Madras, New Delhi"
+        }
+      },
+      "email": "glenda.ellis@example.com",
+      "login": {
+        "uuid": "28c6438d-73f7-4ec2-b60c-535be550a0a2",
+        "username": "blackfrog674",
+        "password": "shojou",
+        "salt": "aQjWJnvy",
+        "md5": "575e6e708a169c881bdcd3f3f65cf366",
+        "sha1": "bbb16f6a4482185ac6a775a310de13c8b78593a2",
+        "sha256": "de4d8d6bf1a3d1d2233dd4f6e051c2498911e940cbf3aceed39988d3b3838385"
+      },
+      "dob": {
+        "date": "1951-08-28T10:41:26.485Z",
+        "age": 70
+      },
+      "registered": {
+        "date": "2013-04-06T21:44:23.120Z",
+        "age": 8
+      },
+      "phone": "03-4020-8593",
+      "cell": "0457-594-472",
+      "id": {
+        "name": "TFN",
+        "value": "580598532"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/8.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
+      },
+      "nat": "AU"
+    }
+  ],
+  "info": {
+    "seed": "854a8e0f45fcab12",
+    "results": 10,
+    "page": 1,
+    "version": "1.3"
+  }
+}

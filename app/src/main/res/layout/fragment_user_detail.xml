@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.UserDetailFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.randomuser.ui.viewmodel.SharedUserViewModel" />
+        <variable
+            name="detailFragment"
+            type="com.example.randomuser.ui.UserDetailFragment" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/double_padding"
+            android:transitionName="@string/user_card_detail_transition">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/double_padding">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="@dimen/double_padding"
+                    android:scaleType="fitXY"
+                    app:loadImage="@{viewModel.user.picture.large}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.getFullName()}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:layout_marginTop="@dimen/double_padding"
+                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="First Last"/>
+
+                <View
+                    android:id="@+id/name_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/dividerHorizontal"
+                    android:layout_marginTop="@dimen/double_padding"
+                    app:layout_constraintTop_toBottomOf="@id/name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/email_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/double_padding"
+                    android:paddingTop="@dimen/half_padding"
+                    android:paddingBottom="@dimen/half_padding"
+                    android:src="@drawable/ic_email_24"
+                    android:onClick="@{() -> detailFragment.onEmailClicked(viewModel.user.email)}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name_divider"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/base_padding"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:text="@{viewModel.user.email}"
+                    android:onClick="@{() -> detailFragment.onEmailClicked(viewModel.user.email)}"
+                    app:layout_constraintStart_toEndOf="@id/email_icon"
+                    app:layout_constraintTop_toTopOf="@id/email_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/email_icon"
+                    tools:text="name@email.com"/>
+
+                <ImageView
+                    android:id="@+id/phone_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/half_padding"
+                    android:paddingBottom="@dimen/half_padding"
+                    android:onClick="@{() -> detailFragment.onPhoneClicked(viewModel.user.phone)}"
+                    android:src="@drawable/ic_phone_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email_icon"/>
+
+                <TextView
+                    android:id="@+id/phone_land"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/base_padding"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:text="@{viewModel.user.phone}"
+                    android:onClick="@{() -> detailFragment.onPhoneClicked(viewModel.user.phone)}"
+                    app:layout_constraintStart_toEndOf="@id/phone_icon"
+                    app:layout_constraintTop_toTopOf="@id/phone_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/phone_icon"
+                    tools:text="1-510-555-5555"/>
+
+                <ImageView
+                    android:id="@+id/mobile_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/half_padding"
+                    android:paddingBottom="@dimen/half_padding"
+                    android:src="@drawable/ic_mobile_phone_24"
+                    android:onClick="@{() -> detailFragment.onPhoneClicked(viewModel.user.cell)}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/phone_icon"/>
+
+                <TextView
+                    android:id="@+id/phone_cell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/base_padding"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:text="@{viewModel.user.cell}"
+                    android:onClick="@{() -> detailFragment.onPhoneClicked(viewModel.user.cell)}"
+                    app:layout_constraintStart_toEndOf="@id/mobile_icon"
+                    app:layout_constraintTop_toTopOf="@id/mobile_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/mobile_icon"
+                    tools:text="1-510-555-5555"/>
+
+                <View
+                    android:id="@+id/contact_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/dividerHorizontal"
+                    android:layout_marginTop="@dimen/double_padding"
+                    app:layout_constraintTop_toBottomOf="@id/mobile_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/street_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/double_padding"
+                    android:paddingTop="@dimen/half_padding"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:text="@{viewModel.user.getStreetAddress()}"
+                    android:onClick="@{() -> detailFragment.onLocationClick(viewModel.user.location)}"
+                    app:layout_constraintTop_toBottomOf="@id/contact_divider"
+                    app:layout_constraintStart_toStartOf="@id/city_state_post"
+                    tools:text="123 Fake Street"/>
+
+                <ImageView
+                    android:id="@+id/location_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_location_24"
+                    android:onClick="@{() -> detailFragment.onLocationClick(viewModel.user.location)}"
+                    app:layout_constraintTop_toTopOf="@id/city_state_post"
+                    app:layout_constraintTop_toBottomOf="@id/city_state_post"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/city_state_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/base_padding"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:text="@{viewModel.user.getCityStatePost()}"
+                    android:onClick="@{() -> detailFragment.onLocationClick(viewModel.user.location)}"
+                    app:layout_constraintTop_toBottomOf="@id/street_address"
+                    app:layout_constraintStart_toEndOf="@id/location_icon"
+                    tools:text="Los Angeles, California, 90007"/>
+
+                <TextView
+                    android:id="@+id/country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:text="@{viewModel.user.location.country}"
+                    android:onClick="@{() -> detailFragment.onLocationClick(viewModel.user.location)}"
+                    app:layout_constraintStart_toStartOf="@id/city_state_post"
+                    app:layout_constraintTop_toBottomOf="@id/city_state_post"
+                    tools:text="United States" />
+
+                <View
+                    android:id="@+id/location_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/dividerHorizontal"
+                    android:layout_marginTop="@dimen/double_padding"
+                    app:layout_constraintTop_toBottomOf="@id/country"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/birthday_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/double_padding"
+                    android:paddingTop="@dimen/half_padding"
+                    android:src="@drawable/ic_birthday_24"
+                    android:onClick="@{() -> detailFragment.onCalendarClick(viewModel.user)}"
+                    app:layout_constraintTop_toBottomOf="@id/location_divider"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/base_padding"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:text="@{viewModel.user.getBirthday()}"
+                    android:onClick="@{() -> detailFragment.onCalendarClick(viewModel.user)}"
+                    app:layout_constraintTop_toTopOf="@id/birthday_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/birthday_icon"
+                    app:layout_constraintStart_toEndOf="@id/birthday_icon"
+                    tools:text="01/01/1984"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
+</layout>

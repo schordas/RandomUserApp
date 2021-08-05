@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Random User</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="land_line">Land Line: %1$s</string>
+    <string name="user_card_detail_transition">user_card_detail</string>
+    <string name="contact_title">Contact</string>
+</resources>
