@@ -22,6 +22,8 @@ while still adhearing to acceptable practices. For example, I created some one o
 functional but are mostly for demonstration; like an extension function and a binding adapter.
 
 ### Additional Comments
+- I built this app strictly on mobile, I did not factor in tablet design.
+
 - I made some assumptions about the api. I didn't see a place in the documentation that said what
 fields were required or not required. I found that the `id` field sometimes had null fields and
 I didn't see a need to use it so I ignored it. All other fields I assumed to be required.
